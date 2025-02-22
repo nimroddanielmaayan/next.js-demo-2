@@ -6,4 +6,3 @@ starting code for the dashboard application.
 For more information, see the [course curriculum](https://nextjs.org/learn) on
 the Next.js Website.
 
-Current page that I'm on: https://nextjs.org/learn/dashboard-app/css-styling
