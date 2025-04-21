@@ -2,6 +2,12 @@
 
 ## Introduction
 
-### The Basics
+### About the Tutorial
 
 - This tutorial is from the official Vercel website - https://nextjs.org/learn
+
+- I am now here: https://nextjs.org/learn/dashboard-app/getting-started
+
+### Next.js Folder Structure
+
+- ...
