@@ -6,8 +6,8 @@
 
 - This tutorial is from the official Vercel website - https://nextjs.org/learn
 
-- I am now here: https://nextjs.org/learn/dashboard-app/getting-started
+- I am here now: https://nextjs.org/learn/dashboard-app/optimizing-fonts-images
 
 ### Next.js Folder Structure
 
-- /app is where most of the code is
+- /app is where most of the code exists
