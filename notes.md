@@ -11,3 +11,5 @@
 ### Next.js Folder Structure
 
 - /app is where most of the code exists
+
+- ...
