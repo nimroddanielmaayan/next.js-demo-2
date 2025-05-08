@@ -25,3 +25,5 @@
 - Layouts are used to share components across multiple pages, such as headers,
   footers, and sidebars. They can also be used to manage state and data fetching
   for the pages they wrap.
+
+  - ...
