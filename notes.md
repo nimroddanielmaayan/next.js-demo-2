@@ -9,11 +9,13 @@
 - I am here now:
   https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-dashboard-layout
 
+## The Basics
+
 ### Next.js Folder Structure
 
 - /app is where most of the code exists
 
-### Next.js: Page vs layout vs route
+### Next.js: Page vs Layout vs Route
 
 - A `page` is a React component that is exported from a file in the `app`
   directory. It is used to define a route\URL in the application (like "pages"
@@ -37,9 +39,12 @@
   two `routable` components will be accessible to the users: `pages` and
   `layouts`. The others will remain internal to the app
 
-### Next.js fonts management
+### Fonts and Images Management in Next.js
 
 - In Next.js, there should be a file named `fonts.ts` under the `app\ui` folder.
   This file is used to manage the fonts and to export them (including weights,
   subsets and so on) to other components. The `layout.tsx` file should import
   the main font and place it in the `<body>` tag
+
+- Next's special `<Image>` component is used to manage images and to manage
+  their optimization
