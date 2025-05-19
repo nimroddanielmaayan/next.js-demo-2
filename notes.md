@@ -48,3 +48,40 @@
 
 - Next's special `<Image>` component is used to manage images and to manage
   their optimization
+
+### More about Layouts
+
+- `layouts` don't re-render when navigating between pages that they wrap. They
+  can persist state, load data, and so on.
+
+- The children of a `layout` are the pages that it wraps. As long as the URL
+  contains one of the pages that the `layout` wraps, the `layout` will persist
+
+- A child of a `layout` can also be another `layout`. This allows you to create
+  nested layouts. For example, you can have a `dashboard` layout that wraps
+  around a `settings` layout. This allows you to create a complex UI structure
+  with multiple levels of navigation
+
+- A `route` can also be a child of a `layout`
+
+- One benefit of using `layouts` in Next.js is that on navigation, only the
+  `page` components update while the `layout` won't re-render. This is called
+  `partial rendering`, which preserves client-side React state in the `layout`
+  when transitioning between `pages`
+
+- The `root layout` is the top-level `layout.tsx` (directly under the "app"
+  folder) that wraps around the entire application
+
+- Any UI you add to the `root layout` will be shared across all pages in your
+  application. You can use the root layout to modify the <html> and <body> tags,
+  and to add metadata
+
+### Next.js Links
+
+- The `<Link>` component is used to create links between pages. We never use the
+  `<a>` tag to create links in Next.js
+
+- Part of what Next.js does behind the scenes is to "prefetch" the linked pages,
+  but without rendering them. This enables fast, smooth navigation. It's called
+  `client-side navigation` because there are no new requests to the server when
+  navigating - the browser navigates between data that it already has
