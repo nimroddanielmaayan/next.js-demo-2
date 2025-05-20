@@ -7,7 +7,11 @@
 - I am here now:
   https://nextjs.org/learn/dashboard-app/setting-up-your-database#create-a-postgres-database
 
+- Run in localhost:3000 using - `pnpm run dev` (not using `npm build`)
+
 - This tutorial is from the official Vercel website - https://nextjs.org/learn
+
+- Deployment: https://next-js-demo-2-two.vercel.app/dashboard
 
 - NOTE: The `clsx` library is included in this project just in order to manage
   "conditional" classes. It's not an essential part of Next.js
@@ -115,3 +119,12 @@
 
 - Next.js provides a hook called `usePathname()` that checks the current URL.
   This is useful for marking links as "active"
+
+## Using a Database
+
+### Setting up the Database
+
+- The database used in this tutorial is PostgreSQL. It's connected using Vercel
+  and supplied by Supabase
+
+-
