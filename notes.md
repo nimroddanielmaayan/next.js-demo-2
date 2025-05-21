@@ -7,7 +7,9 @@
 - I am here now:
   https://nextjs.org/learn/dashboard-app/setting-up-your-database#create-a-postgres-database
 
-- Run in localhost:3000 using - `pnpm run dev` (not using `npm build`)
+- Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
+
+- NOTE: Install\update everything using `PNPM`, not `NPM`
 
 - This tutorial is from the official Vercel website - https://nextjs.org/learn
 
