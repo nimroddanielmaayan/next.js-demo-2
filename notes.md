@@ -7,7 +7,7 @@
 - I am here now:
   https://nextjs.org/learn/dashboard-app/setting-up-your-database#create-a-postgres-database
 
-- Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
+- NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
 - NOTE: Install\update everything using `PNPM`, not `NPM`
 
@@ -27,7 +27,7 @@
 ### Client Components vs Server Components
 
 - `use client` is used to indicate that a component should be rendered on the
-  client side. A component needs to be client component if it:
+  client side. A component needs to be a client component if it:
 
   - Uses state
   - Uses effects
@@ -38,7 +38,7 @@
 
 - Any component that is a child of a client component is also a client
   component. This means that below a client component, all components are client
-  (in Next.js this is also called the "client-server boundary")
+  components (in Next.js this is also called the "client-server boundary")
 
 - Any component that queries data from the server needs to be a server component
 
@@ -100,7 +100,7 @@
 - One benefit of using `layouts` in Next.js is that on navigation, only the
   `page` components update while the `layout` won't re-render. This is called
   `partial rendering`, which preserves client-side React state in the `layout`
-  when transitioning between `pages`
+  when transitioning between `pages`, and also makes the navigation faster
 
 - The `root layout` is the top-level `layout.tsx` (directly under the "app"
   folder) that wraps around the entire application
@@ -112,21 +112,21 @@
 ### Links
 
 - The `<Link>` component is used to create links between pages. We never use the
-  `<a>` tag to create links in Next.js
+  `<a>` tag to create internal links in Next.js
 
 - Part of what Next.js does behind the scenes is to "prefetch" the linked pages,
   but without rendering them. This enables fast, smooth navigation. It's called
   `client-side navigation` because there are no new requests to the server when
-  navigating - the browser navigates between data that it already has
+  navigating - the browser navigates between data that it has already loaded
 
 - Next.js provides a hook called `usePathname()` that checks the current URL.
-  This is useful for marking links as "active"
+  This is useful for marking links as "active" (e.g., when the current page is
+  equal to the linked page)
 
 ## Using a Database
 
 ### Setting up the Database
 
 - The database used in this tutorial is PostgreSQL. It's connected using Vercel
-  and supplied by Supabase
 
 -
