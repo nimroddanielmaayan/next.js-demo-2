@@ -5,7 +5,7 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/setting-up-your-database#create-a-postgres-database
+  https://nextjs.org/learn/dashboard-app/fetching-data#practice-fetch-data-for-the-card-components
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
@@ -144,17 +144,58 @@
   allows us to execute SQL queries using JavaScript, rather than using the SQL
   language directly
 
-- Using server components in Next.js to query data: There are a few benefits of
+- Using server components in Next.js to query data - there are a few benefits of
   doing that, like:
 
-  - Server Components can use async/await syntax without needing useEffect,
-    useState or other data fetching libraries
+  - Server Components can use async/await syntax without needing useEffect or
+    other data fetching libraries like `react-query`
   - Server Components run on the server, so you can keep expensive data fetches
     and logic on the server, only sending the result to the client
   - Server Components can query the database directly without an additional API
     layer
 
+- Note that client components can't query the database directly like server
+  components, so the best practice is to query the data in the server component
+  and then pass it to the client component (if not using a data store like
+  Zustand or Redux)
+
 - It's also possible to use GraphQL to query a database, but it's not done in
   this application
+
+## Static and Dynamic Rendering
+
+### Definitions
+
+- `Static Rendering`: The HTML for a page is generated at build time
+  (pre-rendered). Good for parts of the application that don't change often
+
+- `Dynamic Rendering`: The HTML for a page is generated at request time. Good
+  for parts of the application that change often, or that depend on dynamic data
+
+- A common problem in web development is that with `dynamic rendering`, your
+  application is only as fast as your slowest data fetch. If any data fetch
+  takes too long, the entire application won't load until it's done. And yet,
+  `dynamic rendering` is sometimes necessary
+
+- To try to solve this problem in Next.js, we have `streaming` and `suspense`
+
+### Streaming and Suspense
+
+- The basic idea in `streaming` is to break down the app's UI into `chunks` and
+  to stream them from the server to the client as they become ready
+
+- Any React component can be a `chunk`
+
+- While the `streaming` is happening, the user can already interact with the UI
+  that is already rendered
+
+- There are two ways you implement streaming in Next.js:
+
+  - At the page level, with the loading.tsx file (which creates <Suspense> for
+    you)
+  - At the component level, with <Suspense>, for more granular control
+
+- If any route has a `loading.tsx` file, the entire route will show the contents of that file
+  until the data is fetched (for example - the "dashboard" route in this tutorial)
 
 -
