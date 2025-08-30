@@ -128,5 +128,33 @@
 ### Setting up the Database
 
 - The database used in this tutorial is PostgreSQL. It's connected using Vercel
+  and Neon
+
+- Instructions for connecting a DB\BaaS (like Neon or Supabase) to a Vercel
+  project can be found in the Vercel dashboard
+
+### Querying the Database
+
+- The most common way to query data is using a REST API
+
+- Another way is to use SQL queries in JS using a library like
+  `@vercel/postgres`, the way we are doing in this tutorial
+
+- The "sql" function that we import from `@vercel/postgres` in app/lib/data.ts
+  allows us to execute SQL queries using JavaScript, rather than using the SQL
+  language directly
+
+- Using server components in Next.js to query data: There are a few benefits of
+  doing that, like:
+
+  - Server Components can use async/await syntax without needing useEffect,
+    useState or other data fetching libraries
+  - Server Components run on the server, so you can keep expensive data fetches
+    and logic on the server, only sending the result to the client
+  - Server Components can query the database directly without an additional API
+    layer
+
+- It's also possible to use GraphQL to query a database, but it's not done in
+  this application
 
 -
