@@ -5,11 +5,12 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/fetching-data#practice-fetch-data-for-the-card-components
+  https://nextjs.org/learn/dashboard-app/streaming#grouping-components
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
-- NOTE: Install\update everything using `PNPM`, not `NPM`
+- NOTE: Install\update everything using `PNPM`, not `NPM`. That means using
+  "pnpm add" instead of "npm install" in the terminal
 
 - This tutorial is from the official Vercel website - https://nextjs.org/learn
 
@@ -179,7 +180,7 @@
 
 - To try to solve this problem in Next.js, we have `streaming` and `suspense`
 
-### Streaming and Suspense
+## Streaming and Suspense
 
 - The basic idea in `streaming` is to break down the app's UI into `chunks` and
   to stream them from the server to the client as they become ready
@@ -187,7 +188,8 @@
 - Any React component can be a `chunk`
 
 - While the `streaming` is happening, the user can already interact with the UI
-  that is already rendered
+  that is already rendered - typically the layout, headers, footers, sidebars,
+  etc
 
 - There are two ways you implement streaming in Next.js:
 
@@ -195,7 +197,40 @@
     you)
   - At the component level, with <Suspense>, for more granular control
 
-- If any route has a `loading.tsx` file, the entire route will show the contents of that file
-  until the data is fetched (for example - the "dashboard" route in this tutorial)
+### Streaming an entire route
 
--
+- If any route has a `loading.tsx` file, the entire route will show the contents
+  of that file until the data is fetched (for example - the "dashboard" route in
+  this tutorial)
+
+- Any subroute of a route with a `loading.tsx` file will also show the contents
+  of that file until the data is fetched. To avoid this, we can create a
+  separate `loading.tsx` file for the subroutes, or to use the `route groups`
+  feature in Next.js
+
+- A `route group` is a way to group multiple routes together in a logical way,
+  without affecting the URL hirarchy. To use it, we need to simply wrap the
+  folder name in parentheses - like (overview) for the top level of the
+  dashboard route. these folders won't be displayed in the URL path
+
+- Loading Skeletons:A common UX pattern is to show an animated "loading"
+  skeleton while the data is being fetched
+
+### Streaming a single component
+
+- This can be done by using the built-in `<Suspense>` component, which has a
+  buil-in 'fallback' prop
+
+- The `<Suspense>` component is wrapped around the component that we want to
+  stream, and the fallback is the `skeleton` UI or some other form of "loading"
+  indicatior, like an animation
+
+- Grouping components, for streaming purposes: Sometimes we'll want to group
+  multiple components together and stream them as a single unit, to make the
+  user experience less confusing. This is done simply by wrapping the relevant
+  components with a single "meta component" , and then wrapping the "meta
+  component" with the `<Suspense>` component
+
+## Partial Prerendering
+
+- ...
