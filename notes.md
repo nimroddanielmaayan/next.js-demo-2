@@ -5,7 +5,7 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/streaming#grouping-components
+  https://nextjs.org/learn/dashboard-app/mutating-data#creating-an-invoice
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
@@ -18,6 +18,24 @@
 
 - NOTE: The `clsx` library is included in this project just in order to manage
   "conditional" classes. It's not an essential part of Next.js
+
+- Important note: There are some things that need to be considered when using
+  Zustand or Redux along with Next.js:
+
+  - Zustand: https://zustand.docs.pmnd.rs/guides/nextjs
+  - Redux: https://redux.js.org/usage/nextjs
+
+- Note: We can use `sql` in Next.js because it's a full-stack framework that
+  runs both on the server and on the client simultaneously, unlike "regular"
+  React.js. Next.js has "server commands" capabilities, just as if we were
+  writing code for a Node.js server application (and Next.js actually does run
+  an instance of Node.js under the hood). This is a major feature of Next.js,
+  and it's the main thing that sets it apart from "regular" React.js
+
+- Next.js is not just "enhanced React". It's something different. It shouldn't
+  be used instead of React in any scenario, but only when it's features are
+  actually necceesary. Not every web application really needs to run on the
+  client and on the server simultaneously
 
 ## The Basics
 
@@ -145,11 +163,6 @@
   allows us to execute SQL queries using JavaScript, rather than using the SQL
   language directly
 
-- Reminder: We can use `sql` in Next.js because it's a full-stack framework that
-  runs on both the server and the client, unlike "regular" React.js. Next.js has
-  "server commands" capabilities, similar to Node.js (and it actually does run
-  an instance of Node.js under the hood)
-
 - Note: When using `console.log` in a server component, the log will be
   displayed in the terminal, NOT in the browser
 
@@ -253,8 +266,9 @@
 
 ## Partial Prerendering (PPR)
 
-- Note: In Next.js version 15 and above, `Partial Prerendering` is already a
-  stable feature
+- Note: I'm not sure id in Next.js version 15 and above, `Partial Prerendering`
+  is already a stable feature or still experimental. If it's still experimental,
+  it shouldn't be used in production yet
 
 - It's recommended (for now) to use the `ppr: 'incremental'` option in the
   `next.config` file in order to incrementaly adopt `Partial Prerendering` for
@@ -270,8 +284,108 @@
 ### General
 
 - Next.js uses several APIs for search and pagination: `useSearchParams`,
-  `usePathname`, and `useRouter`.
+  `usePathname`, and `useRouter`
+
+- `search` and `pagination` patterns are different in Next.js from what we may
+  be used to when working with client-side React. But there are benefits to
+  using URL search params and to "lifting state to the server"
 
 ### Search
 
-- ...
+- The recommended way to implement search in Next.js is to use URL search
+  params. This way, a single search can be done on both the server side and on
+  the client side at the same time. That's something unique to Next.js. And it
+  allows sharing, bookmarking, server-side rendering, analytics and tracking
+
+- Search client hooks:
+
+  - `useSearchParams`: Access the parameters of the current URL. They are
+    returned as an object
+  - `usePathname` - Returns the current URL's pathname
+  - `useRouter`- navigates between routes within client components,
+    programmatically
+
+- `useRouter`'s methods:
+
+  - `router.push(href: string, { scroll: boolean })`: Perform a client-side
+    navigation to the provided route. Adds a new entry into the browser’s
+    history stack
+  - `router.replace(href: string, { scroll: boolean })`: Perform a client-side
+    navigation to the provided route without adding a new entry into the
+    browser’s history stack
+  - `router.refresh()`: Refresh the current route. Making a new request to the
+    server, re-fetching data requests, and re-rendering Server Components. The
+    client will merge the updated React Server Component payload without losing
+    unaffected client-side React (e.g. useState) or browser state (e.g. scroll
+    position)
+  - `router.prefetch(href: string, options?: { onInvalidate?: () => void })`:
+    Prefetch the provided route for faster client-side transitions. The optional
+    onInvalidate callback is called when the prefetched data becomes stale.
+  - `router.back()`: Navigate back to the previous route in the browser’s
+    history stack
+  - `router.forward()`: Navigate forwards to the next page in the browser’s
+    history stack
+
+- Common implementation of search in Next.js:
+
+  - Capture the user's input
+  - Update the URL with the search params
+  - Keep the URL in sync with the input field
+  - Update the table to reflect the search query
+
+- A detailed example of how to implement search in Next.js can be seen here:
+  https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
+
+- The result is a search box that's dynamically synched with both the browser's
+  URL params and with the data table (that shows the filtered data)
+
+- NOTE: The `useSearchParams()` hook is used to access the URL search params on
+  a client component, while the `searchParams` prop is used to access the URL
+  search params on a server component
+
+- Search debouncing: `debouncing` is a technique used to delay the execution of
+  the search query until the user pauses. It's a very common technique, and we
+  implement it here using the library `use-debounce`
+
+### Pagination
+
+- Note: The `<Pagination>` component here is a client component, so we don't
+  want to fetch data on it (since the database secrets would be exposed this
+  way). We're not using an API here, but rather fetching data directly in the
+  server, using server components (in which the database secrets are not sent to
+  the client). After fetching the data, we pass it to the client component
+
+- A typical implementation of a `pagination` pattern in Next.js can be seen in:
+  https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
+
+## Mutating Data
+
+### Basic Terms
+
+- `React Server Actions` are a way to mutate data on the server
+
+- The native `FormData` object is used to capture data from a form
+
+- The `revalidatePath API` is used to revalidate a path
+
+### React Server Actions
+
+- `Server Actions` allow us to run asynchronous code directly on the server. The
+  SQL commands that we have been using in this application are an example of
+  `React Server Actions`
+
+- `Server Actions` can be used to mutate data on the server\on the database,
+  without an API layer. They can be invoked from both server and client
+  components
+
+- A major advantage of `Server Actions` is security. They include features like
+  encrypted closures, strict input checks, error message hashing, host
+  restrictions, and more
+
+### Using Server Actions to Create a Form
+
+- We can use the action attribute in the `<form>` element to invoke actions. The
+  action will automatically receive the native FormData object, containing the
+  captured data
+
+-
