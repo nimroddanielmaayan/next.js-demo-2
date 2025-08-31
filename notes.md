@@ -40,7 +40,10 @@
 - This is why Next.js can be used in an architecture that includes only itself
   and a database, without any need for a standalone server application (like
   Node.js or Flask) or for an API layer. But, such an architecture is only
-  recommended for certain use cases
+  recommended for certain use cases - for example, when there's a need for
+  strict and clear separation between the server application and the client
+  application (or several client applications\platforms). In general, React is
+  more "universal" than Next.js
 
 ## The Basics
 
