@@ -37,6 +37,11 @@
   actually necceesary. Not every web application really needs to run on the
   client and on the server simultaneously
 
+- This is why Next.js can be used in an architecture that includes only itself
+  and a database, without any need for a standalone server application (like
+  Node.js or Flask) or for an API layer. But, such an architecture is only
+  recommended for certain use cases
+
 ## The Basics
 
 ### Next.js Folder Structure
