@@ -145,6 +145,14 @@
   allows us to execute SQL queries using JavaScript, rather than using the SQL
   language directly
 
+- Reminder: We can use `sql` in Next.js because it's a full-stack framework that
+  runs on both the server and the client, unlike "regular" React.js. Next.js has
+  "server commands" capabilities, similar to Node.js (and it actually does run
+  an instance of Node.js under the hood)
+
+- Note: When using `console.log` in a server component, the log will be
+  displayed in the terminal, NOT in the browser
+
 - Using server components in Next.js to query data - there are a few benefits of
   doing that, like:
 
@@ -167,25 +175,27 @@
 
 ### Definitions
 
-- `Static Rendering`: The HTML for a page is generated at build time
-  (pre-rendered). Good for parts of the application that don't change often
+- `Static Rendering`: The front end is generated at build time, on the server.
+  It's also often called `pre-rendering`. Good for parts of the application that
+  don't change often
 
-- `Dynamic Rendering`: The HTML for a page is generated at request time. Good
-  for parts of the application that change often, or that depend on dynamic data
+- `Dynamic Rendering`: The front end is generated at request time, on the
+  browser. Good for parts of the application that change often, or that contain
+  dynamic data
 
-- A common problem in web development is that with `dynamic rendering`, your
+- A common problem in web development is that with `Dynamic Rendering`, your
   application is only as fast as your slowest data fetch. If any data fetch
   takes too long, the entire application won't load until it's done. And yet,
-  `dynamic rendering` is sometimes necessary
-
-- To try to solve this problem in Next.js, we have `streaming` and `suspense`
+  `Dynamic Rendering` is sometimes necessary. To try to solve this problem in
+  Next.js, we have `streaming` and `suspense`
 
 ## Streaming and Suspense
 
 - The basic idea in `streaming` is to break down the app's UI into `chunks` and
   to stream them from the server to the client as they become ready
 
-- Any React component can be a `chunk`
+- Any React component, group of components, or even the entire route can be a
+  `chunk`
 
 - While the `streaming` is happening, the user can already interact with the UI
   that is already rendered - typically the layout, headers, footers, sidebars,
@@ -193,9 +203,10 @@
 
 - There are two ways you implement streaming in Next.js:
 
-  - At the page level, with the loading.tsx file (which creates <Suspense> for
-    you)
-  - At the component level, with <Suspense>, for more granular control
+  - At the page level, with the loading.tsx file (which creates a `<Suspense>`
+    component for us behind the scenes)
+  - At the component\component group level, using `<Suspense>` components, for
+    more granular control
 
 ### Streaming an entire route
 
@@ -231,6 +242,36 @@
   components with a single "meta component" , and then wrapping the "meta
   component" with the `<Suspense>` component
 
-## Partial Prerendering
+- The decision where to place `suspense boundaries` depends on how we want the
+  user experience to be. In general, it's good practice to move data fetches
+  down to the components that need it, and then wrap those components in
+  `<Suspense>`.
+
+- In different scenarios, we might want to `stream` individual components,
+  groups of components, or even the entire route. It's ok to experiment and see
+  what works best
+
+## Partial Prerendering (PPR)
+
+- Note: In Next.js version 15 and above, `Partial Prerendering` is already a
+  stable feature
+
+- It's recommended (for now) to use the `ppr: 'incremental'` option in the
+  `next.config` file in order to incrementaly adopt `Partial Prerendering` for
+  specific routes
+
+- `Partial Prerendering` doesn't rewuire us to change the code to use it. As
+  long as we're using `Suspense` to wrap the dynamic parts of the route, Next.js
+  will know which parts of the route are static and which are dynamic, and
+  handle prerendering accordingly to improve load times
+
+## Search and Pagination
+
+### General
+
+- Next.js uses several APIs for search and pagination: `useSearchParams`,
+  `usePathname`, and `useRouter`.
+
+### Search
 
 - ...
