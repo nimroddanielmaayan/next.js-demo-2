@@ -25,6 +25,9 @@
   - Zustand: https://zustand.docs.pmnd.rs/guides/nextjs
   - Redux: https://redux.js.org/usage/nextjs
 
+- This tutorial includes CRUD operations (Create, Read, Update, Delete) using
+  server actions in Next.js, as well as URL-based search and pagination
+
 - Note: We can use `sql` in Next.js because it's a full-stack framework that
   runs both on the server and on the client simultaneously, unlike "regular"
   React.js. Next.js has "server commands" capabilities, just as if we were
