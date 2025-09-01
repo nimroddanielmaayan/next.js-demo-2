@@ -5,7 +5,7 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/mutating-data#creating-an-invoice
+  https://nextjs.org/learn/dashboard-app/mutating-data#4-validate-and-prepare-the-data
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
@@ -394,10 +394,20 @@
   encrypted closures, strict input checks, error message hashing, host
   restrictions, and more
 
-### Using Server Actions to Create a Form
+- It's recommended to create a single "actions.ts" file in the `app/lib` folder
+  of the application, and to export all the actions from there. This file needs
+  to start with "use server" at the top of the file, to mark all the exported
+  functions within the file as Server Actions
 
-- We can use the action attribute in the `<form>` element to invoke actions. The
-  action will automatically receive the native FormData object, containing the
-  captured data
+- `Server Actions` can be invoked from both server and client components
 
--
+- It's also possible to write `Server Actions` in any component, and in this
+  case we'll have to expressively add 'use server' to that file
+
+- Behind the scenes, `Server Actions` create a "POST" API endpoint, to send data
+  to the server. This is why we don't need to create API endpoints manually when
+  using `Server Actions`
+
+- In React, the "action" attribute in the `<form>` HTML element is a special
+  prop, that can receive a function that can be a `Server Actions`, like we do
+  here
