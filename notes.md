@@ -5,7 +5,7 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/mutating-data#4-validate-and-prepare-the-data
+  https://nextjs.org/learn/dashboard-app/error-handling#adding-trycatch-to-server-actions
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
@@ -353,7 +353,12 @@
 
 - NOTE: The `useSearchParams()` hook is used to access the URL search params on
   a client component, while the `searchParams` prop is used to access the URL
-  search params on a server component
+  search params on a server component.
+
+- The `searchParams` and `params` built-in Next.js props that a page can receive
+  from the URL, if it wants to. `searchParams` includes all the URL search
+  params, and `params` includes the dynamic route parameters (like `[post-name]`
+  in `[post-name].tsx`)
 
 - Search debouncing: `debouncing` is a technique used to delay the execution of
   the search query until the user pauses. It's a very common technique, and we
@@ -379,6 +384,9 @@
 - The native `FormData` object is used to capture data from a form
 
 - The `revalidatePath API` is used to revalidate a path
+
+- The `redirect` function is used to redirect the user to a new path (typically,
+  after a successful action)
 
 ### React Server Actions
 
@@ -411,3 +419,29 @@
 - In React, the "action" attribute in the `<form>` HTML element is a special
   prop, that can receive a function that can be a `Server Actions`, like we do
   here
+
+- In this tutorial, we'll use Zod, a TypeScript-first validation library, to
+  validate data
+
+- Tip: It's usually good practice to store monetary values in cents, in order to
+  avoid errors
+
+- After updating data in the database, it's a good practice to revalidate the
+  path using the Next.js `revalidatePath` function. This clears the cached data
+  for the path so that the data is refetched from the database
+
+- `Dynamic Routes` - a way to generate URLs with parameters, like `[id].tsx` or
+  `[blog-post].tsx`. Used for blog posts, products, invoices, etc.
+
+- The JS `bind` function is used in this tutorial to ensure that any values
+  passed to the Server Action are encoded
+
+## Handling Errors
+
+### Try\Catch in Server Actions
+
+- ...
+
+### The error.tsx File
+
+- ...
