@@ -1,8 +1,16 @@
-## Next.js App Router Course - Starter
+# Next.js demo
 
-This is the starter template for the Next.js App Router Course. It contains the
-starting code for the dashboard application.
+This is a demo of a Next.js application. It showcases the following
+Next.js\Vercel features:
 
-For more information, see the [course curriculum](https://nextjs.org/learn) on
-the Next.js Website.
+- Server Actions
+- Dynamic Routes
+- Search and Pagination
+- Error Handling
+- Streaming
+- Authentication
+- Authorization
+- Deployment
+- NeonDB integration (through Vercel)
 
+Deployment: <https://next-js-demo-2-two.vercel.app/>

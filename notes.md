@@ -5,7 +5,7 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/error-handling#adding-trycatch-to-server-actions
+  https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
@@ -443,8 +443,20 @@
 
 ### Try\Catch in Server Actions
 
-- ...
+- Like in any case where we manipulate data in a database, `try\catch` should be
+  used to handle errors in case an operation is unsuccessfull
+
+- Reminder: If an error occurs inside a `try\catch` block, the code that follows
+  inside that function won't be executed
 
 ### The error.tsx File
 
-- ...
+- `error.tsx` serves as a catch-all for unexpected errors and allows us to
+  display a fallback UI to users
+
+- The error component accepts two props: `error` and `reset`. The `error` prop
+  object is an instance of JavaScript's native Error object. The `reset` prop is
+  a function that resets the error boundary. When executed, the function will
+  try to re-render the route segment
+
+-
