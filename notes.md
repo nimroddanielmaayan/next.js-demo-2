@@ -106,6 +106,10 @@
   two `routable` components will be accessible to the users: `pages` and
   `layouts`. The others will remain internal to the app
 
+- If a subfolder inside the `app` folder doesn't contain a `route.tsx` file, a
+  `layout.tsx` file or a `page.tsx` file, it will be treated as a "private" and
+  won't be accessible to the users
+
 ### Fonts and Images Management
 
 - In Next.js, there should be a file named `fonts.ts` under the `app\ui` folder.
@@ -451,7 +455,7 @@
 
 ### The error.tsx File
 
-- `error.tsx` serves as a catch-all for unexpected errors and allows us to
+- `error.tsx` serves as a "catch-all" for unexpected errors and allows us to
   display a fallback UI to users
 
 - The error component accepts two props: `error` and `reset`. The `error` prop
@@ -459,4 +463,45 @@
   a function that resets the error boundary. When executed, the function will
   try to re-render the route segment
 
--
+### The notFound Function and the not-found.tsx File
+
+- While `error.tsx` is useful for catching uncaught exceptions, `notFound` can
+  be used when we try to fetch a resource that doesn't exist
+
+- It's a more specific version of `error.tsx`. We use it when the user tries to
+  fetch a resource that doesn't exist
+
+- To use it:
+
+  - Import the `notFound` function from "next/navigation"
+  - Call the `notFound` function in the relevant file (typically inside an "if"
+    statement)
+  - Add a `not-found.tsx` file in the relevant folder
+
+- `notFound` will take precedence over `error.tsx`, because it's more specific
+
+## Accessibility
+
+### The ESLint Accessibility Plugin
+
+- Next.js includes the eslint-plugin-jsx-a11y plugin in its ESLint config to
+  help catch accessibility issues
+
+- Running pnpm lint in the terminal will give us a comprehensive report of
+  linting errors, including accessibility issues
+
+## Form Validation
+
+### Client Side Validation
+
+- The basic way to validate a form is on the client side, for example by using
+  the `required` attribute in required input fields
+
+- The problem is - client side validation is not 100% reliable
+
+### Server Side Validation
+
+- The recommended way to validate forms is on the server side
+
+- In this project, we'll use Zod and the `useActionState` hook to validate forms
+  on the server side
