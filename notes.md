@@ -5,7 +5,7 @@
 ### About the Tutorial
 
 - I am here now:
-  https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function
+  https://nextjs.org/learn/dashboard-app/improving-accessibility#form-validation
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
@@ -490,6 +490,11 @@
 - Running pnpm lint in the terminal will give us a comprehensive report of
   linting errors, including accessibility issues
 
+- It's recommended to add a "lint" command to the `package.json` file, and to
+  run "pnpm lint" or "npm lint" in the terminal, in order to start seeing
+  linting errors while editing code ("pnpm lint"\"npm lint" will initiate a
+  guided installation of the plugin)
+
 ## Form Validation
 
 ### Client Side Validation
@@ -502,6 +507,9 @@
 ### Server Side Validation
 
 - The recommended way to validate forms is on the server side
+
+- This way, we can validat that the data structure that is sent to the server is
+  correct
 
 - In this project, we'll use Zod and the `useActionState` hook to validate forms
   on the server side
