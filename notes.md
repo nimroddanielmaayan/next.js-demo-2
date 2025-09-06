@@ -552,4 +552,29 @@
 - Password hashing: By doing this, the passwords are not stored in plain text
   but rather in an encoded form
 
--
+## Adding Metadata
+
+### Next.js's Metadata API
+
+- Config-based metadata: Export a static metadata object or a dynamic
+  generateMetadata function in a layout.js or page.js file
+
+- File-based metadata: Next.js has a range of special files that are
+  specifically used for metadata purposes:
+
+  - favicon.ico, apple-icon.jpg, and icon.jpg: Utilized for favicons and icons
+  - opengraph-image.jpg and twitter-image.jpg: Employed for social media images
+  - robots.txt: Provides instructions for search engine crawling
+  - sitemap.xml: Offers information about the website's structure
+
+- All of the metadata will appear in the `<head>` tag of the HTML document
+
+### Page title and description
+
+- We can include a metadata object in any layout.js or page.js file to add
+  additional page information like title and description. Any metadata in a
+  layout.js file will be inherited by all pages that use it
+
+- Metadata in nested pages will override the metadata in the parent
+
+- Metadata can include dynamic values, like the page title (using %s)
