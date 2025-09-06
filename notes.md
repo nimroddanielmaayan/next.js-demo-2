@@ -518,4 +518,38 @@
   track of the state of the form, and of the errors that occur when the form is
   submitted
 
-- ...
+## Authentication
+
+### Authentication Definitions
+
+- Authentication is about making sure the user is who they say they are
+
+- Authorization decides what parts of the application the users are allowed to
+  use
+
+### NextAuth.js
+
+- `NextAuth.js` abstracts away much of the complexity involved in managing
+  sessions, sign-in and sign-out, and other aspects of authentication
+
+- To use it, we need to:
+
+  - Install the `next-auth` package (pnpm i next-auth@beta or npm i
+    next-auth@beta)
+  - Create a secret key at https://generate-secret.vercel.app/32 and add it to
+    the `.env.local` file and to the project environment variables in Vercel
+  - Add AUTH_SECRET=your-secret-key to the `.env.local` file
+  - Create an `auth.config.ts` file at the root of the project, and inside it,
+    protect the routes with Next.js middleware
+  - Create a `middleware.ts` file at the root of the project, and inside it,
+    initialize NextAuth.js
+  - Create an `auth.ts` file at the root of the project, and inside it, create a
+    NextAuth.js provider
+  - Add providers option to the `auth.ts` file
+  - Add authentication logic to the `auth.ts` file. `zod` can be used to
+    validate the inputs, such as email and password
+
+- Password hashing: By doing this, the passwords are not stored in plain text
+  but rather in an encoded form
+
+-
