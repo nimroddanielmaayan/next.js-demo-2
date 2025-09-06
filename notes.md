@@ -512,7 +512,7 @@
   correct
 
 - In this project, we'll use Zod and the `useActionState` hook to validate forms
-  on the server side
+  on the server side. More info here: <https://zod.dev/>
 
 - `useActionState` is a hook that manages the state of a form action. It keeps
   track of the state of the form, and of the errors that occur when the form is
