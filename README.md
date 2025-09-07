@@ -23,3 +23,8 @@ Main libraries used in this project:
 - Zod
 
 Deployment: <https://next-js-demo-2-two.vercel.app/>
+
+Login credentials:
+
+- Email: <user@nextmail.com>
+- Password: 123456

@@ -4,17 +4,16 @@
 
 ### About the Tutorial
 
-- I am here now:
-  https://nextjs.org/learn/dashboard-app/improving-accessibility#form-validation
+- Completed in September 2025
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 
 - NOTE: Install\update everything using `PNPM`, not `NPM`. That means using
   "pnpm add" instead of "npm install" in the terminal
 
-- This tutorial is from the official Vercel website - https://nextjs.org/learn
+- This tutorial is from the official Vercel website - <https://nextjs.org/learn>
 
-- Deployment: https://next-js-demo-2-two.vercel.app/dashboard
+- Deployment: <https://next-js-demo-2-two.vercel.app/dashboard>
 
 - NOTE: The `clsx` library is included in this project just in order to manage
   "conditional" classes. It's not an essential part of Next.js
@@ -22,8 +21,8 @@
 - Important note: There are some things that need to be considered when using
   Zustand or Redux along with Next.js:
 
-  - Zustand: https://zustand.docs.pmnd.rs/guides/nextjs
-  - Redux: https://redux.js.org/usage/nextjs
+  - Zustand: <https://zustand.docs.pmnd.rs/guides/nextjs>
+  - Redux: <https://redux.js.org/usage/nextjs>
 
 - This tutorial includes CRUD operations (Create, Read, Update, Delete) using
   server actions in Next.js, as well as URL-based search and pagination
@@ -144,8 +143,8 @@
   folder) that wraps around the entire application
 
 - Any UI you add to the `root layout` will be shared across all pages in your
-  application. You can use the root layout to modify the <html> and <body> tags,
-  and to add metadata
+  application. You can use the root layout to modify the `<html>` and `<body>`
+  tags, and to add metadata
 
 ### Links
 
@@ -353,7 +352,7 @@
   - Update the table to reflect the search query
 
 - A detailed example of how to implement search in Next.js can be seen here:
-  https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
+  <https://nextjs.org/learn/dashboard-app/adding-search-and-pagination>
 
 - The result is a search box that's dynamically synched with both the browser's
   URL params and with the data table (that shows the filtered data)
@@ -380,7 +379,7 @@
   the client). After fetching the data, we pass it to the client component
 
 - A typical implementation of a `pagination` pattern in Next.js can be seen in:
-  https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
+  <https://nextjs.org/learn/dashboard-app/adding-search-and-pagination>
 
 ## Mutating Data
 
@@ -536,7 +535,7 @@
 
   - Install the `next-auth` package (pnpm i next-auth@beta or npm i
     next-auth@beta)
-  - Create a secret key at https://generate-secret.vercel.app/32 and add it to
+  - Create a secret key at <https://generate-secret.vercel.app/32> and add it to
     the `.env.local` file and to the project environment variables in Vercel
   - Add AUTH_SECRET=your-secret-key to the `.env.local` file
   - Create an `auth.config.ts` file at the root of the project, and inside it,
