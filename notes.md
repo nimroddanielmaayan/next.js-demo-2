@@ -4,7 +4,7 @@
 
 ### About the Tutorial
 
-- Completed in September 2025
+- First live version completed in September 2025
 
 - NOTE: Run in localhost:3000 using - `pnpm run dev` (not using `npm dev`)
 

@@ -27,3 +27,7 @@ Deployment: <https://next-js-demo-2-two.vercel.app/>
 - Vercel
 - Zod
 - NeonDB
+
+## Other Information
+
+- Version: 1.0.0
