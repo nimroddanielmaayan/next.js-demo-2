@@ -51,6 +51,11 @@
   needs its own instance of Node.js for server-side rendering and for server
   actions (which is what Next.js provides)
 
+- I should not use Next.js with Zustand until I check the implications of this.
+  In general, setting up an application with Next.js is something that "someone
+  who knows what they're doing" should decide to do. The default for a React
+  application should be a "regular\simple" React application, without Next
+
 ## The Basics
 
 ### Next.js Folder Structure
