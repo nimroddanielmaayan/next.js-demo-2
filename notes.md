@@ -207,6 +207,12 @@
 - It's also possible to use GraphQL to query a database, but it's not done in
   this application
 
+### Neon and Supabase MCP Servers
+
+- Both Neon and Supabase have MCP servers, which are currently the best way to
+  allow Claude Code\any other AI coding tool to "see" both the front end code
+  and the back end SaaS
+
 ## Static and Dynamic Rendering
 
 ### Definitions
